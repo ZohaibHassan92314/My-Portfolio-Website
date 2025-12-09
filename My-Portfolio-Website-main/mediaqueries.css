@@ -1,0 +1,157 @@
+/* ===== Media Queries ===== */
+
+/* Large screens / laptops */
+@media screen and (max-width: 1400px){
+    #profile{
+        height: 83vh;
+        margin-bottom: 6rem;
+    }
+
+    .about-containers{
+        flex-wrap: wrap;
+    }
+
+    #contact,
+    #projects{
+        height: fit-content;
+    }
+}
+
+/* Medium screens / smaller laptops & tablets */
+@media screen and (max-width: 1200px){
+    #desktop-nav{
+        display: none;
+    }
+
+    #hamburger-nav{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    } 
+
+    #experience,
+    .experience-details-container{
+        margin-top: 2rem;
+    }
+
+    #profile,
+    .section-container{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .arrow{
+        display: none;
+    }
+
+    section,
+    .section-container{
+        height: fit-content;
+        padding: 0 2%;
+    }
+
+    section{
+        margin: 0 5%;
+    }
+
+    .section__pic-container{
+       width: 275px;
+       height: 275px;
+       margin: 0 auto 2rem;
+    }
+
+    .about-containers{
+        margin-top: 0;
+    }
+}
+
+/* Small screens / mobile devices */
+@media screen and (max-width: 600px){
+    #contact,
+    footer{
+        height: auto;
+    }
+
+    #profile{
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    article{
+        font-size: 1rem;
+    }
+
+    footer nav{
+        height: fit-content;
+        margin-bottom: 2rem;
+    }
+
+    .about-containers,
+    .contact-info-upper-container,
+    .btn-container{
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .contact-info-container{
+        margin: 0;
+        width: 100%;
+    }
+
+    .contact-info-container p,
+    .nav-links li a{
+        font-size: 1rem;
+    }
+
+    .experience-sub-title{
+        font-size: 1.25rem;
+    }
+
+    .logo{
+        font-size: 1.5rem;
+    }
+
+    .nav-links{
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .section__pic-container{
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto 2rem;
+    }
+
+    .section__pic-container img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .section__text__p2{
+        font-size: 1.25rem;
+    }
+
+    .title{
+        font-size: 2rem;
+    }
+
+    .text-container{
+        text-align: justify;
+        padding: 0 1rem;
+    }
+
+    button, .btn-container {
+        width: 100%;
+    }
+
+    .section-container, .section__text-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+}
