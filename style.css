@@ -779,13 +779,10 @@ section {
   width: 100%; height: 100%;
   border-radius: 50%;
   padding: 3px;
-  background: conic-gradient(from 0deg, var(--c-accent), var(--c-violet), var(--c-accent));
-  animation: ringHue 6s linear infinite;
-  box-shadow: 0 0 50px var(--c-accent-glow),
-              0 0 100px rgba(0,212,255,0.1);
+  background: var(--c-accent);
+  box-shadow: 0 0 40px var(--c-accent-glow),
+              0 0 80px rgba(0,212,255,0.08);
 }
-
-@keyframes ringHue { to { filter: hue-rotate(360deg); } }
 
 .profile-ring img {
   width: 100%; height: 100%;
