@@ -5,286 +5,481 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zohaib Hassan — Data Engineer specialising in scalable data pipelines, ETL, Snowflake, Power BI, and data visualisation.">
     <meta name="author" content="Zohaib Hassan">
-    <meta name="theme-color" content="#0d0f14">
+    <meta name="theme-color" content="#070810">
     <title>Zohaib Hassan — Data Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
 </head>
 <body>
-    <!-- Scroll progress indicator -->
-    <div id="scroll-progress" aria-hidden="true"></div>
 
-    <!-- ── DESKTOP NAV ── -->
-    <nav id="desktop-nav">
-        <div class="logo">Zohaib Hassan</div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <!-- ═══ CURSOR (desktop only) ═══ -->
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ═══ SCROLL PROGRESS ═══ -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════
+       CINEMATIC INTRO OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="intro-overlay" aria-hidden="true" role="presentation">
+    <div class="intro-inner">
+      <div class="intro-mono">ZH</div>
+      <div class="intro-name-wrap">
+        <div class="intro-name-row" id="intro-row-1">
+          <span>Z</span><span>O</span><span>H</span><span>A</span><span>I</span><span>B</span>
         </div>
+        <div class="intro-name-row intro-name-row--2" id="intro-row-2">
+          <span>H</span><span>A</span><span>S</span><span>S</span><span>A</span><span>N</span>
+        </div>
+      </div>
+      <p class="intro-role">Data Engineer</p>
+      <div class="intro-bar-track"><div class="intro-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION — DESKTOP (floating capsule)
+  ══════════════════════════════════════════ -->
+  <nav id="desktop-nav" aria-label="Main navigation">
+    <a href="#profile" class="logo" aria-label="Zohaib Hassan — home">ZH</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about"      class="nav-link" data-nav="about">About</a></li>
+      <li><a href="#experience" class="nav-link" data-nav="experience">Skills</a></li>
+      <li><a href="#projects"   class="nav-link" data-nav="projects">Projects</a></li>
+      <li><a href="#contact"    class="nav-link" data-nav="contact">Contact</a></li>
+    </ul>
+    <a href="./assets/Muhammad Zohaib Hassan Resume.pdf"
+       class="nav-resume" target="_blank" rel="noopener noreferrer">
+      Resume <span aria-hidden="true">↗</span>
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION — HAMBURGER
+  ══════════════════════════════════════════ -->
+  <nav id="hamburger-nav" aria-label="Mobile navigation">
+    <a href="#profile" class="logo">ZH</a>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()"
+           aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="menu-links" id="mobile-menu">
+        <li><a href="#about"      onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#projects"   onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#contact"    onclick="toggleMenu()">Contact</a></li>
+        <li><a href="./assets/Muhammad Zohaib Hassan Resume.pdf"
+               target="_blank" rel="noopener" onclick="toggleMenu()">Resume ↗</a></li>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: HERO / PROFILE
+  ══════════════════════════════════════════ -->
+  <section id="profile">
+
+    <!-- Live canvas data-flow visualisation -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <!-- Fine grid overlay -->
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+    <!-- Left: editorial hero text -->
+    <div class="hero-text">
+      <p class="hero-eyebrow">
+        <span class="hero-eyebrow-line" aria-hidden="true"></span>
+        Hello, I'm
+      </p>
+
+      <h1 class="hero-name">
+        <span class="hero-word" id="hw1">ZOHAIB</span>
+        <span class="hero-word hero-word--outline" id="hw2">HASSAN</span>
+      </h1>
+
+      <div class="hero-role-wrap">
+        <span class="hero-role-label">Data Engineer</span>
+        <span class="hero-role-cursor" aria-hidden="true"></span>
+      </div>
+
+      <!-- Floating technical annotations -->
+      <div class="hero-annotations" aria-hidden="true">
+        <div class="ann ann--1"><span class="ann-num">01</span><span class="ann-label">Pipeline Eng.</span></div>
+        <div class="ann ann--2"><span class="ann-num">02</span><span class="ann-label">Analytics</span></div>
+        <div class="ann ann--3"><span class="ann-num">03</span><span class="ann-label">Snowflake</span></div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="btn-container hero-btns">
+        <button id="btn-resume"  class="btn btn-color-2 magnetic"
+                onclick="window.open('./assets/Muhammad Zohaib Hassan Resume.pdf')">
+          <span class="btn-inner">Download CV</span>
+        </button>
+        <button id="btn-contact" class="btn btn-color-1 magnetic"
+                onclick="location.href='./#contact'">
+          <span class="btn-inner">Contact Info</span>
+        </button>
+      </div>
+
+      <!-- Socials -->
+      <div id="socials-container">
+        <a href="https://www.linkedin.com/in/zohaibhassan07/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn profile" class="social-link magnetic-sm">
+          <img src="./assets/linkedin.png" alt="" class="icon" aria-hidden="true"/>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/ZohaibHassan92314"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub profile" class="social-link magnetic-sm">
+          <img src="./assets/github.png" alt="" class="icon" aria-hidden="true"/>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: profile image with deco ring -->
+    <div class="section__pic-container hero-image-wrap">
+      <svg class="hero-deco-ring" viewBox="0 0 420 420" aria-hidden="true">
+        <circle cx="210" cy="210" r="200" fill="none"
+                stroke="rgba(0,212,255,0.18)" stroke-width="1"
+                stroke-dasharray="6 18" class="ring-spin"/>
+        <circle cx="210" cy="210" r="185" fill="none"
+                stroke="rgba(0,212,255,0.06)" stroke-width="0.5"/>
+        <circle cx="210" cy="210" r="170" fill="none"
+                stroke="rgba(124,58,237,0.12)" stroke-width="0.5"
+                stroke-dasharray="3 9"/>
+      </svg>
+      <div class="profile-ring">
+        <img src="./assets/my_pic.png" alt="Zohaib Hassan profile picture"/>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-cue-line"></div>
+      <span>scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: ABOUT
+  ══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="section-bg-text" aria-hidden="true">ABOUT</div>
+
+    <div class="section-header">
+      <p class="section__text__p1 reveal">Get to know More</p>
+      <h2 class="title reveal reveal--delay-1">About Me</h2>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Image column -->
+      <div class="about-img-col reveal">
+        <div class="about-img-frame">
+          <img src="./assets/my-pic2.png" alt="Profile picture" class="about-pic"/>
+          <div class="about-img-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="about-img-tags" aria-hidden="true">
+          <span class="about-tag">DATA ENGINEER</span>
+          <span class="about-tag">ISLAMABAD, PK</span>
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="about-content-col">
+
+        <blockquote class="about-statement reveal reveal--delay-1">
+          "Building reliable data infrastructure that transforms raw information into actionable insights."
+        </blockquote>
+
+        <div class="about-containers reveal reveal--delay-2">
+          <div class="details-container">
+            <img src="./assets/experience.png" alt="" class="icon" aria-hidden="true"/>
+            <h3>Experience</h3>
+            <p>1 year<br/>Data Engineer</p>
+          </div>
+          <div class="details-container">
+            <img src="./assets/education.png" alt="" class="icon" aria-hidden="true"/>
+            <h3>Education</h3>
+            <p>BESE Bachelor's<br/>Software Engineering</p>
+          </div>
+        </div>
+
+        <div class="text-container reveal reveal--delay-3">
+          <p>I'm a Data Engineer with a background in Software Engineering and a Hafiz-e-Quran.
+             I design and build scalable Data Pipelines, maintain data infrastructure, and
+             ensure high standards of data quality and reliability. I also enjoy data analysis and
+             creating interactive dashboards and reports that deliver actionable insights for
+             effective decision-making.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <img src="./assets/arrow.png" alt="Scroll to Skills"
+         class="icon arrow" onclick="location.href='./#experience'">
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: EXPERIENCE / SKILLS
+  ══════════════════════════════════════════ -->
+  <section id="experience">
+    <div class="section-bg-text" aria-hidden="true">SKILLS</div>
+
+    <div class="section-header">
+      <p class="section__text__p1 reveal">Explore My</p>
+      <h2 class="title reveal reveal--delay-1">Technical Skills</h2>
+    </div>
+
+    <!-- Skill node constellation (JS-enhanced) -->
+    <div class="skills-scene reveal reveal--delay-2" id="skills-scene" aria-label="Skills">
+
+      <!-- Data Engineering cluster -->
+      <div class="skill-cluster" id="cluster-eng" data-label="Data Engineering">
+        <div class="cluster-label">Data Engineering</div>
+        <div class="skill-nodes">
+          <div class="skill-node" data-level="Experienced" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Python</span><span class="sn-level">Experienced</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">SQL</span><span class="sn-level">Intermediate</span>
+          </div>
+          <div class="skill-node" data-level="Experienced" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">ETL Pipelines</span><span class="sn-level">Experienced</span>
+          </div>
+          <div class="skill-node" data-level="Basic" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Git / GitHub</span><span class="sn-level">Basic</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Data Modeling</span><span class="sn-level">Intermediate</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Snowflake</span><span class="sn-level">Intermediate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline connector (decorative) -->
+      <div class="cluster-bridge" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 80 2" preserveAspectRatio="none">
+          <line x1="0" y1="1" x2="80" y2="1" stroke="rgba(0,212,255,0.25)"
+                stroke-width="1" stroke-dasharray="4 6"/>
+        </svg>
+        <div class="bridge-dot bridge-dot--pulse"></div>
+      </div>
+
+      <!-- Data Analytics cluster -->
+      <div class="skill-cluster" id="cluster-ana" data-label="Data Analytics">
+        <div class="cluster-label">Data Analytics</div>
+        <div class="skill-nodes">
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Power BI</span><span class="sn-level">Intermediate</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Excel</span><span class="sn-level">Intermediate</span>
+          </div>
+          <div class="skill-node" data-level="Experienced" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Data Visualisation</span><span class="sn-level">Experienced</span>
+          </div>
+          <div class="skill-node" data-level="Basic" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">AI &amp; ML Fundamentals</span><span class="sn-level">Basic</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">EDA</span><span class="sn-level">Intermediate</span>
+          </div>
+          <div class="skill-node" data-level="Intermediate" tabindex="0">
+            <div class="sn-dot"></div><span class="sn-name">Statistics</span><span class="sn-level">Intermediate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legacy fallback / hidden article container for SEO -->
+    <div class="skills-fallback sr-only" aria-hidden="true">
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Data Engineering</h2>
+            <div class="article-container">
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Python</h3><p>Experienced</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>SQL</h3><p>Intermediate</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>ETL Pipelines</h3><p>Experienced</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Git / GitHub</h3><p>Basic</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Data Modeling</h3><p>Intermediate</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Snowflake</h3><p>Intermediate</p></div></article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Data Analytics</h2>
+            <div class="article-container">
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Power BI</h3><p>Intermediate</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Excel</h3><p>Intermediate</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Data Visualisation</h3><p>Experienced</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>AI &amp; ML Fundamentals</h3><p>Basic</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>EDA</h3><p>Intermediate</p></div></article>
+              <article><img src="./assets/checkmark.png" alt="" class="icon"/><div><h3>Statistics</h3><p>Intermediate</p></div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="./assets/arrow.png" alt="Scroll to Projects"
+         class="icon arrow" onclick="location.href='./#projects'"/>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: PROJECTS
+  ══════════════════════════════════════════ -->
+  <section id="projects">
+    <div class="section-bg-text" aria-hidden="true">WORK</div>
+
+    <div class="section-header">
+      <p class="section__text__p1 reveal">Browse My Recent</p>
+      <h2 class="title reveal reveal--delay-1">Projects</h2>
+    </div>
+
+    <!-- Editorial project list -->
+    <div class="projects-list">
+
+      <!-- ── Project 01 ── -->
+      <div class="project-row reveal" data-num="01">
+        <div class="project-num" aria-hidden="true">01</div>
+        <div class="project-body">
+          <h3 class="project-title experience-sub-title project-title">Project One</h3>
+          <p class="project-desc">Pak Wheels used-car market exploration — EDA &amp; interactive analytics dashboard.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Streamlit</span><span>EDA</span>
+          </div>
+          <div class="btn-container project-btns">
+            <button id="proj1-github" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://github.com/ZohaibHassan92314/used-cars-analysis'">
+              Github ↗
+            </button>
+            <button id="proj1-demo" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://used-cars-analysis-7lpd2en6z3ybgmvwjcropx.streamlit.app/#pak-wheels-used-cars-dashboard'">
+              Live Demo ↗
+            </button>
+          </div>
+        </div>
+        <div class="project-image-reveal">
+          <img src="./assets/pic1.png"
+               alt="Project One — Pak Wheels Used Cars Dashboard" loading="lazy"/>
+        </div>
+      </div>
+
+      <!-- ── Project 02 ── -->
+      <div class="project-row reveal reveal--delay-1" data-num="02">
+        <div class="project-num" aria-hidden="true">02</div>
+        <div class="project-body">
+          <h3 class="project-title experience-sub-title project-title">Project Two</h3>
+          <p class="project-desc">Hospital beds system capacity analysis — EDA &amp; healthcare data insights.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Streamlit</span><span>Healthcare Data</span>
+          </div>
+          <div class="btn-container project-btns">
+            <button id="proj2-github" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://github.com/ZohaibHassan92314/Hospital-Beds-System-Analysis-EDA-'">
+              Github ↗
+            </button>
+            <button id="proj2-demo" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://nwmgzhiag9qdfbwuduja48.streamlit.app/'">
+              Live Demo ↗
+            </button>
+          </div>
+        </div>
+        <div class="project-image-reveal">
+          <img src="./assets/pic2.png"
+               alt="Project Two — Hospital Beds System Analysis" loading="lazy"/>
+        </div>
+      </div>
+
+      <!-- ── Project 03 ── -->
+      <div class="project-row reveal reveal--delay-2" data-num="03">
+        <div class="project-num" aria-hidden="true">03</div>
+        <div class="project-body">
+          <h3 class="project-title experience-sub-title project-title">Project Three</h3>
+          <p class="project-desc">Banggood e-commerce analytics — market intelligence &amp; trend visualisation.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Streamlit</span><span>Market Analytics</span>
+          </div>
+          <div class="btn-container project-btns">
+            <button id="proj3-github" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://github.com/ZohaibHassan92314/BanggoodAnalysis/tree/master'">
+              Github ↗
+            </button>
+            <button id="proj3-demo" class="btn btn-color-2 project-btn"
+                    onclick="location.href='https://banggoodanalysis-6z9tj6ygimruhiqm2df2k6.streamlit.app/'">
+              Live Demo ↗
+            </button>
+          </div>
+        </div>
+        <div class="project-image-reveal">
+          <img src="./assets/pic3.png"
+               alt="Project Three — Banggood Analysis" loading="lazy"/>
+        </div>
+      </div>
+
+    </div><!-- /.projects-list -->
+
+    <img src="./assets/arrow.png" alt="Scroll to Contact"
+         class="icon arrow" onclick="location.href='./#contact'"/>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: CONTACT
+  ══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="section-bg-text" aria-hidden="true">HELLO</div>
+
+    <div class="section-header">
+      <p class="section__text__p1 reveal">Get in Touch</p>
+      <h2 class="title reveal reveal--delay-1">Contact Me</h2>
+    </div>
+
+    <p class="contact-cta-sub reveal reveal--delay-2">
+      Let's build something remarkable together.
+    </p>
+
+    <div class="contact-info-upper-container reveal reveal--delay-3">
+      <div class="contact-info-container">
+        <img src="./assets/email.png" alt="Email" class="icon contact-icon email-icon"/>
+        <p><a href="mailto:zohaiblatif29@gmail.com">zohaiblatif29@gmail.com</a></p>
+      </div>
+      <div class="contact-divider" aria-hidden="true"></div>
+      <div class="contact-info-container">
+        <img src="./assets/github.png" alt="LinkedIn" class="icon contact-icon"/>
+        <p><a href="https://www.linkedin.com/in/zohaibhassan07/"
+              target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <nav aria-label="Footer navigation">
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </nav>
+    <p>Copyright &#169; 2025 Zohaib Hassan. All Rights Reserved.</p>
+  </footer>
 
-    <!-- ── HAMBURGER NAV ── -->
-    <nav id="hamburger-nav">
-        <div class="logo">Zohaib Hassan</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links">
-                <li><a href="#about"      onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects"   onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact"    onclick="toggleMenu()">Contact</a></li>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ── HERO / PROFILE ── -->
-    <section id="profile">
-        <div class="hero-bg" aria-hidden="true">
-            <div class="hero-orb hero-orb--1"></div>
-            <div class="hero-orb hero-orb--2"></div>
-            <div class="hero-grid"></div>
-        </div>
-        <div class="section__pic-container reveal">
-            <div class="profile-ring">
-                <img src="./assets/my_pic.png" alt="Zohaib Hassan profile picture"/>
-            </div>
-        </div>
-        <div class="section__text reveal reveal--delay-1">
-            <p class="section__text__p1">Hello, I'm</p>
-            <h1 class="title">Zohaib Hassan</h1>
-            <p class="section__text__p2">Data Engineer</p>
-            <div class="btn-container">
-                <button id="btn-resume"  class="btn btn-color-2" onclick="window.open('./assets/Muhammad Zohaib Hassan Resume.pdf')">Download CV</button>
-                <button id="btn-contact" class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
-            </div>
-            <div id="socials-container">
-                <a href="https://www.linkedin.com/in/zohaibhassan07/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="social-link">
-                    <img src="./assets/linkedin.png" alt="LinkedIn" class="icon"/>
-                </a>
-                <a href="https://github.com/ZohaibHassan92314" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="social-link">
-                    <img src="./assets/github.png" alt="GitHub" class="icon"/>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── ABOUT ── -->
-    <section id="about">
-        <p class="section__text__p1 reveal">Get to know More</p>
-        <h1 class="title reveal reveal--delay-1">About Me</h1>
-        <div class="section-container">
-            <div class="section__pic-container reveal">
-                <img src="./assets/my-pic2.png" alt="Profile picture" class="about-pic"/>
-            </div>
-            <div class="about-details-container">
-                <div class="about-containers reveal reveal--delay-1">
-                    <div class="details-container">
-                        <img src="./assets/experience.png" alt="Experience icon" class="icon"/>
-                        <h3>Experience</h3>
-                        <p>1 year <br/>Data Engineer</p>
-                    </div>
-                    <div class="details-container">
-                        <img src="./assets/education.png" alt="Education icon" class="icon"/>
-                        <h3>Education</h3>
-                        <p>BESE Bachelors Degree <br/>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="text-container reveal reveal--delay-2">
-                    <p>I'm a Data Engineer with a background in Software Engineering and a Hafiz-e-Quran.
-                       I design and build scalable Data Pipelines, maintain data infrastructure, and
-                       ensure high standards of data quality and reliability. I also enjoy data analysis and
-                       creating interactive dashboards and reports that deliver actionable insights for effective decision-making.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png"
-             alt="Scroll to Experience"
-             class="icon arrow"
-             onclick="location.href='./#experience'">
-    </section>
-
-    <!-- ── EXPERIENCE ── -->
-    <section id="experience">
-        <p class="section__text__p1 reveal">Explore My</p>
-        <h1 class="title reveal reveal--delay-1">Experience</h1>
-        <div class="experience-details-container">
-            <div class="about-containers reveal reveal--delay-1">
-                <!-- Data Engineering -->
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Data Engineering</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Python</h3><p>Experienced</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>SQL</h3><p>Intermediate</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>ETL Pipelines</h3><p>Experienced</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Git / GitHub</h3><p>Basic</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Data Modeling</h3><p>Intermediate</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Snowflake</h3><p>Intermediate</p></div>
-                        </article>
-                    </div>
-                </div>
-                <!-- Data Analytics -->
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Data Analytics</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Power BI</h3><p>Intermediate</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Excel</h3><p>Intermediate</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Data Visualisation</h3><p>Experienced</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>AI &amp; ML Fundamentals</h3><p>Basic</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>EDA</h3><p>Intermediate</p></div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Checkmark" class="icon"/>
-                            <div><h3>Statistics</h3><p>Intermediate</p></div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png"
-             alt="Scroll to Projects"
-             class="icon arrow"
-             onclick="location.href='./#projects'"/>
-    </section>
-
-    <!-- ── PROJECTS ── -->
-    <section id="projects">
-        <p class="section__text__p1 reveal">Browse My Recent</p>
-        <h1 class="title reveal reveal--delay-1">Projects</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <!-- Project 1 -->
-                <div class="details-container color-container reveal">
-                    <div class="article-container">
-                        <img src="./assets/pic1.png" alt="Project One — Pak Wheels Used Cars Dashboard" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Project One</h2>
-                    <div class="btn-container">
-                        <button id="proj1-github"  class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://github.com/ZohaibHassan92314/used-cars-analysis'">
-                            Github
-                        </button>
-                        <button id="proj1-demo"    class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://used-cars-analysis-7lpd2en6z3ybgmvwjcropx.streamlit.app/#pak-wheels-used-cars-dashboard'">
-                            Live Demo
-                        </button>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="details-container color-container reveal reveal--delay-1">
-                    <div class="article-container">
-                        <img src="./assets/pic2.png" alt="Project Two — Hospital Beds System Analysis EDA" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Project Two</h2>
-                    <div class="btn-container">
-                        <button id="proj2-github"  class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://github.com/ZohaibHassan92314/Hospital-Beds-System-Analysis-EDA-'">
-                            Github
-                        </button>
-                        <button id="proj2-demo"    class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://nwmgzhiag9qdfbwuduja48.streamlit.app/'">
-                            Live Demo
-                        </button>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="details-container color-container reveal reveal--delay-2">
-                    <div class="article-container">
-                        <img src="./assets/pic3.png" alt="Project Three — Banggood Analysis" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Project Three</h2>
-                    <div class="btn-container">
-                        <button id="proj3-github"  class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://github.com/ZohaibHassan92314/BanggoodAnalysis/tree/master'">
-                            Github
-                        </button>
-                        <button id="proj3-demo"    class="btn btn-color-2 project-btn"
-                                onclick="location.href='https://banggoodanalysis-6z9tj6ygimruhiqm2df2k6.streamlit.app/'">
-                            Live Demo
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png"
-             alt="Scroll to Contact"
-             class="icon arrow"
-             onclick="location.href='./#contact'"/>
-    </section>
-
-    <!-- ── CONTACT ── -->
-    <section id="contact">
-        <p class="section__text__p1 reveal">Get in Touch</p>
-        <h1 class="title reveal reveal--delay-1">Contact Me</h1>
-        <div class="contact-info-upper-container reveal reveal--delay-2">
-            <div class="contact-info-container">
-                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon"/>
-                <p><a href="mailto:zohaiblatif29@gmail.com">zohaiblatif29@gmail.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="./assets/github.png" alt="LinkedIn icon" class="icon contact-icon"/>
-                <p><a href="https://www.linkedin.com/in/zohaibhassan07/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── FOOTER ── -->
-    <footer>
-        <nav aria-label="Footer navigation">
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-        <p>Copyright &#169; 2025 Zohaib Hassan. All Rights Reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
